@@ -1,6 +1,21 @@
 import tkinter
 import sys
 import PySimpleGUI as sg
+import os
+
+#Função de leitura das tarefas no arquivo
+def read_tasks():
+    tasks = []
+    if os.path.exists("saved_tasks.txt"):
+        with open("saved_tasks.txt","r") as file:
+            tasks = [line.strip() for line in file.readlines()]
+    return tasks
+
+#Função para escrever as tarefas no arquivo
+def write_tasks():
+    with open("saved_tasks.txt", "w") as file:
+        for task in tasks:
+            file.write(f"{task}\n")
 
 #Layout/Estrutura da Janela inicial
 layout = [
